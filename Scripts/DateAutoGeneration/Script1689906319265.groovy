@@ -16,8 +16,6 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
-import org.openqa.selenium.Keys as Keys
 //
 import java.util.Calendar as Calendar
 import java.text.SimpleDateFormat as SimpleDateFormat
@@ -29,36 +27,50 @@ WebUI.maximizeWindow()
 
 WebUI.navigateToUrl('https://demoqa.com/links')
 
-WebUI.click(findTestObject('Object Repository/DateAutoGeneration/Page_DEMOQA/svg'))
+WebUI.click(findTestObject('Object Repository/Page_DEMOQA/svg'))
 
-WebUI.click(findTestObject('Object Repository/DateAutoGeneration/Page_DEMOQA/div_Forms'))
+WebUI.click(findTestObject('Object Repository/Page_DEMOQA/div_Widgets'))
 
-WebUI.click(findTestObject('Object Repository/DateAutoGeneration/Page_DEMOQA/span_Practice Form'))
+WebUI.scrollToElement(findTestObject('Page_DEMOQA/div_Widgets'), 0)
+
+WebUI.click(findTestObject('Object Repository/Page_DEMOQA/span_Date Picker'))
 
 //
 // Get the current date and create a Calendar instance
 Calendar currentDate = Calendar.getInstance()
 
 // subtract 3 years to the current date
-currentDate.add(Calendar.YEAR, -18)
+currentDate.add(Calendar.YEAR, 0)
 
 // Format the date as "mm/dd/yyyy"
-SimpleDateFormat dateFormat = new SimpleDateFormat('dd-MM-yyyy')
+SimpleDateFormat dateFormat = new SimpleDateFormat('MM-dd-yyyy hh:mm a')
 
 String pastDate = dateFormat.format(currentDate.time)
 
 // Print the past date
 println('Past Date is: ' + pastDate)
 
-
-
-WebUI.clearText(findTestObject('Object Repository/DateAutoGeneration/Page_DEMOQA/input_Date of Birth_dateOfBirthInput'))
-
 WebUI.delay(3)
 
-////
-// Input the current date into the text box unfortunately i cant clear the text in the field so there's still a problem, but it's working tho' haha
-WebUI.setText(findTestObject('Object Repository/DateAutoGeneration/Page_DEMOQA/input_Date of Birth_dateOfBirthInput'), pastDate)
+WebUI.sendKeys(findTestObject('Object Repository/Page_DEMOQA/input_Select Date_datePickerMonthYearInput'), Keys.chord(Keys.CONTROL, 
+        'a'))
 
-WebUI.delay(60)
+WebUI.sendKeys(findTestObject('Object Repository/Page_DEMOQA/input_Select Date_datePickerMonthYearInput'), Keys.chord(Keys.BACK_SPACE))
+
+'Select Date'
+WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Select Date_datePickerMonthYearInput'), pastDate)
+
+WebUI.click(findTestObject('Page_DEMOQA/svg'))
+
+WebUI.click(findTestObject('Page_DEMOQA/svg'))
+
+WebUI.sendKeys(findTestObject('Object Repository/Page_DEMOQA/input_Date And Time_dateAndTimePickerInput'), Keys.chord(Keys.CONTROL, 
+        'a'))
+
+WebUI.sendKeys(findTestObject('Object Repository/Page_DEMOQA/input_Date And Time_dateAndTimePickerInput'), Keys.chord(Keys.BACK_SPACE))
+
+'Date and Time'
+WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Date And Time_dateAndTimePickerInput'), pastDate)
+
+WebUI.delay(3)
 
