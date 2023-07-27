@@ -70,6 +70,10 @@ for (int i = 0; i < numberOfIterations; i++) {
 	
 	WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Full Name_userName'), initialValue.toString()) // Replace 'yourTestObject' with the actual Test Object
 
+	WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Email_userEmail'), initialValue.toString())
+	
+	WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/textarea_Current Address_currentAddress'), initialValue.toString())
+	
 	// Add other web automation actions as needed
 
 
@@ -82,7 +86,4 @@ for (int i = 0; i < numberOfIterations; i++) {
 
 //WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Full Name_userName'), iterationValue.toString())
 
-WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/input_Email_userEmail'), 'Second')
-
-WebUI.setText(findTestObject('Object Repository/Page_DEMOQA/textarea_Current Address_currentAddress'), 'Third')
 
